@@ -22,23 +22,33 @@ func FizzBuzz(n int) {
 	fmt.Println()
 }
 func PrintFizzBuzzValue(i int) {
-	var is3times uint
-	var is5times uint
-	if i%3 == 0 {
-		is3times = 0x01
-	}
-	if i%5 == 0 {
-		is5times = 0x10
-	}
-	var judge uint = is3times | is5times
-	switch judge {
-	case 0x00:
+	// var is3times uint
+	// var is5times uint
+	// if i%3 == 0 {
+	// 	is3times = 0x01
+	// }
+	// if i%5 == 0 {
+	// 	is5times = 0x10
+	// }
+	// var judge uint = is3times | is5times
+	// switch judge {
+	// case 0x00:
+	// 	fmt.Printf("%d", i)
+	// case 0x01:
+	// 	fmt.Printf("Fizz")
+	// case 0x10:
+	// 	fmt.Printf("Buzz")
+	// case 0x11:
+	// 	fmt.Printf("Fizz Buzz")
+	// }
+	switch {
+	case i%3 == 0 && i%5 == 0:
+		fmt.Print("Fizz Buzz")
+	case i%3 == 0:
+		fmt.Print("Fizz")
+	case i%5 == 0:
+		fmt.Print("Buzz")
+	default:
 		fmt.Printf("%d", i)
-	case 0x01:
-		fmt.Printf("Fizz")
-	case 0x10:
-		fmt.Printf("Buzz")
-	case 0x11:
-		fmt.Printf("Fizz Buzz")
 	}
 }
