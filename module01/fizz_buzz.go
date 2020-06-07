@@ -14,11 +14,12 @@ import "fmt"
 // it here to make life easier for beginners.
 func FizzBuzz(n int) {
 
-	for i := 1; i < n; i++ {
+	for i := 1; i <= n; i++ {
 		PrintFizzBuzzValue(i)
-		fmt.Print(", ")
+		if i != n {
+			fmt.Print(", ")
+		}
 	}
-	PrintFizzBuzzValue(n)
 	fmt.Println()
 }
 func PrintFizzBuzzValue(i int) {
