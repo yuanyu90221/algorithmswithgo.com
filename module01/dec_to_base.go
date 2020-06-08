@@ -21,9 +21,15 @@ func DecToBase(dec, base int) string {
 	// 	lastCarry = carry
 	// 	carry = carry / base
 	// }
+	// for dec > 0 {
+	// 	rem := dec % base
+	// 	result = fmt.Sprintf("%X%s", rem, result)
+	// 	dec = dec / base
+	// }
+	var charset = "0123456789ABCDEF"
 	for dec > 0 {
 		rem := dec % base
-		result = fmt.Sprintf("%X%s", rem, result)
+		result = string(charset[rem]) + result
 		dec = dec / base
 	}
 	return result
