@@ -13,15 +13,19 @@ import "fmt"
 //
 func DecToBase(dec, base int) string {
 	result := ""
-	remain := dec % base
-	carry := dec / base
-	lastCarry := 0
-	for ; carry != 0 || remain != 0; remain = lastCarry % base {
-		result = Format(remain) + result
-		lastCarry = carry
-		carry = carry / base
+	// remain := dec % base
+	// carry := dec / base
+	// lastCarry := 0
+	// for ; carry != 0 || remain != 0; remain = lastCarry % base {
+	// 	result = Format(remain) + result
+	// 	lastCarry = carry
+	// 	carry = carry / base
+	// }
+	for dec > 0 {
+		rem := dec % base
+		result = fmt.Sprintf("%X%s", rem, result)
+		dec = dec / base
 	}
-	fmt.Println(result)
 	return result
 }
 
