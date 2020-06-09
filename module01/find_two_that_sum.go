@@ -35,5 +35,29 @@ package module01
 //    for the sum of 4.
 //
 func FindTwoThatSum(numbers []int, sum int) (int, int) {
-	return 0, 0
+	for idx, _ := range numbers {
+		anotherIdx := CheckElementExist(numbers, sum, idx)
+		if anotherIdx != -1 {
+			if anotherIdx > idx {
+				return idx, anotherIdx
+			} else {
+				return anotherIdx, idx
+			}
+		}
+	}
+	return -1, -1
+}
+
+func CheckElementExist(numbers []int, sum, current int) int {
+	result := -1
+	target := sum - numbers[current]
+	for idx, item := range numbers {
+		if idx == current {
+			continue
+		}
+		if item == target {
+			return idx
+		}
+	}
+	return result
 }
