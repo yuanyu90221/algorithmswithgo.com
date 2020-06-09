@@ -1,6 +1,7 @@
 package module01
 
 import (
+	"fmt"
 	"math"
 	"strconv"
 )
@@ -16,8 +17,16 @@ import (
 func BaseToDec(value string, base int) int {
 	length := len(value)
 	result := 0
-	for idx, value := range value {
-		result += ConvertDigit(value, base, length-idx-1)
+	// for idx, value := range value {
+	// 	result += ConvertDigit(value, base, length-idx-1)
+	// }
+	// Sscanf version solution
+	multiplier := 1
+	for i := length - 1; i >= 0; i-- {
+		var val int
+		fmt.Sscanf(string(value[i]), "%X", &val)
+		result += multiplier * val
+		multiplier *= base
 	}
 	return result
 }
