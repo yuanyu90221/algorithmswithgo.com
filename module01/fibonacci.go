@@ -25,5 +25,23 @@ package module01
 //   Fibonacci(14) => 377
 //
 func Fibonacci(n int) int {
-	return 0
+	// recursive solution
+	// if n < 2 {
+	// 	return n
+	// } else {
+	// 	return Fibonacci(n-1) + Fibonacci(n-2)
+	// }
+	//iteration
+	result := n
+	if n < 2 {
+		return result
+	}
+	fn_1 := 0
+	fn_2 := 1
+	for idx := 2; idx <= n; idx++ {
+		result = fn_1 + fn_2
+		fn_1 = fn_2
+		fn_2 = result
+	}
+	return result
 }
