@@ -35,16 +35,32 @@ package module01
 //    for the sum of 4.
 //
 func FindTwoThatSum(numbers []int, sum int) (int, int) {
-	for idx, _ := range numbers {
-		anotherIdx := CheckElementExist(numbers, sum, idx)
-		if anotherIdx != -1 {
-			if anotherIdx > idx {
-				return idx, anotherIdx
+	// put all value into map
+	searchMap := make(map[int]int)
+	for idx, val := range numbers {
+		searchMap[val] = idx
+	}
+	for idx, val := range numbers {
+		target := sum - val
+		v, ok := searchMap[target]
+		if ok && v != idx {
+			if v > idx {
+				return idx, v
 			} else {
-				return anotherIdx, idx
+				return v, idx
 			}
 		}
 	}
+	// for idx, _ := range numbers {
+	// 	anotherIdx := CheckElementExist(numbers, sum, idx)
+	// 	if anotherIdx != -1 {
+	// 		if anotherIdx > idx {
+	// 			return idx, anotherIdx
+	// 		} else {
+	// 			return anotherIdx, idx
+	// 		}
+	// 	}
+	// }
 	return -1, -1
 }
 
