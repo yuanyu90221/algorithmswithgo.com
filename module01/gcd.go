@@ -8,9 +8,6 @@ func GCD(a, b int) int {
 	// }
 	dividee := a
 	divider := b
-	if a < b {
-		dividee, divider = divider, dividee
-	}
 	for dividee%divider != 0 {
 		dividee, divider = divider, dividee%divider
 	}
