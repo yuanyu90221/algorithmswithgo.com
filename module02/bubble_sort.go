@@ -10,10 +10,15 @@ import (
 func BubbleSortInt(list []int) {
 	lenOfList := len(list)
 	for idx := 1; idx < lenOfList; idx++ {
+		swapped := false
 		for cIdx := 0; cIdx < lenOfList-idx; cIdx++ {
 			if list[cIdx] > list[cIdx+1] {
 				list[cIdx], list[cIdx+1] = list[cIdx+1], list[cIdx]
+				swapped = true
 			}
+		}
+		if !swapped {
+			break
 		}
 	}
 }
@@ -23,10 +28,15 @@ func BubbleSortInt(list []int) {
 func BubbleSortString(list []string) {
 	lenOfList := len(list)
 	for idx := 1; idx < lenOfList; idx++ {
+		swapped := false
 		for cIdx := 0; cIdx < lenOfList-idx; cIdx++ {
 			if list[cIdx] > list[cIdx+1] {
 				list[cIdx], list[cIdx+1] = list[cIdx+1], list[cIdx]
+				swapped = true
 			}
+		}
+		if !swapped {
+			break
 		}
 	}
 }
@@ -36,10 +46,15 @@ func BubbleSortString(list []string) {
 func BubbleSortPerson(people []Person) {
 	lenOfPeople := len(people)
 	for idx := 1; idx < lenOfPeople-1; idx++ {
+		swapped := false
 		for cIdx := 0; cIdx < lenOfPeople-idx; cIdx++ {
 			if people[cIdx].Age > people[cIdx+1].Age {
 				people[cIdx], people[cIdx+1] = people[cIdx+1], people[cIdx]
+				swapped = true
 			}
+		}
+		if !swapped {
+			break
 		}
 	}
 }
@@ -49,10 +64,15 @@ func BubbleSortPerson(people []Person) {
 func BubbleSort(list sort.Interface) {
 	lenOfList := list.Len()
 	for idx := 1; idx < lenOfList; idx++ {
+		swapped := false
 		for cIdx := 0; cIdx < lenOfList-idx; cIdx++ {
 			if list.Less(cIdx+1, cIdx) {
 				list.Swap(cIdx, cIdx+1)
+				swapped = true
 			}
+		}
+		if !swapped {
+			break
 		}
 	}
 }
