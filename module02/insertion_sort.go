@@ -16,8 +16,12 @@ func InsertionSortInt(list []int) {
 	sortedList := []int{list[0]}
 	for idx := 1; idx < len(list); idx++ {
 		index := FindTargetWithBinaryCheck(sortedList, list[idx])
+		/**
 		movedElements := append([]int{list[idx]}, sortedList[index:]...)
 		sortedList = append(sortedList[:index], movedElements...)
+		**/
+		// sortedList[:index] + index + sortedList[i:]
+		sortedList = append(sortedList[:index], append([]int{list[idx]}, sortedList[index:]...)...)
 	}
 	for idx, _ := range list {
 		list[idx] = sortedList[idx]
@@ -55,8 +59,9 @@ func InsertionSortString(list []string) {
 	sortedList := []string{list[0]}
 	for idx := 1; idx < len(list); idx++ {
 		index := FindTargetStringWithBinaryCheck(sortedList, list[idx])
-		movedElements := append([]string{list[idx]}, sortedList[index:]...)
-		sortedList = append(sortedList[:index], movedElements...)
+		// movedElements := append([]string{list[idx]}, sortedList[index:]...)
+		// sortedList = append(sortedList[:index], movedElements...)
+		sortedList = append(sortedList[:index], append([]string{list[idx]}, sortedList[index:]...)...)
 	}
 	for idx, _ := range list {
 		list[idx] = sortedList[idx]
@@ -82,8 +87,9 @@ func InsertionSortPerson(people []Person) {
 	sortedList := []Person{people[0]}
 	for idx := 1; idx < len(people); idx++ {
 		index := FindTargetPersonWithBinaryCheck(sortedList, people[idx])
-		movedElements := append([]Person{people[idx]}, sortedList[index:]...)
-		sortedList = append(sortedList[:index], movedElements...)
+		// movedElements := append([]Person{people[idx]}, sortedList[index:]...)
+		// sortedList = append(sortedList[:index], movedElements...)
+		sortedList = append(sortedList[:index], append([]Person{people[idx]}, sortedList[index:]...)...)
 	}
 	for idx, _ := range people {
 		people[idx] = sortedList[idx]
